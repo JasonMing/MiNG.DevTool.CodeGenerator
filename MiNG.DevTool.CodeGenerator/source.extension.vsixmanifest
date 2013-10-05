@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
 	<Metadata>
-		<Identity Id="a3d9bd45-ab54-4946-af71-c31afa4d669a" Version="0.0.0.1" Language="en-US" Publisher="MiNG" />
+		<Identity Id="a3d9bd45-ab54-4946-af71-c31afa4d669a" Version="0.1.0.0" Language="zh-Hans" Publisher="MiNG" />
 		<DisplayName>MiNG.DevTool.CodeGenerator</DisplayName>
-		<Description xml:space="preserve">The code generator</Description>
+		<Description xml:space="preserve">通过使用简单模版生成代码。 </Description>
 	</Metadata>
 	<Installation InstalledByMsi="false">
 		<InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="11.0" />
@@ -14,5 +14,6 @@
 	</Dependencies>
 	<Assets>
 		<Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+		<Asset d:Source="Project" d:ProjectName="%CurrentProject%" Type="Microsoft.VisualStudio.ItemTemplate" d:TargetPath="|%CurrentProject%;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
 	</Assets>
 </PackageManifest>

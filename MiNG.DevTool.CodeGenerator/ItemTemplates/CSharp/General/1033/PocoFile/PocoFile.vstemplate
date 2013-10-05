@@ -1,0 +1,14 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Item">
+	<TemplateData>
+		<DefaultName>Default.poco</DefaultName>
+		<Name>Poco文件</Name>
+		<Description>用于生成简单对象的模版文件。</Description>
+		<ProjectType>CSharp</ProjectType>
+		<Icon Package="{a3d9bd45-ab54-4946-af71-c31afa4d669a}" ID="110"/>
+		<TemplateID>cbddb061-2f28-4554-bee0-c7d647f485b3</TemplateID>
+	</TemplateData>
+	<TemplateContent>
+		<References />
+		<ProjectItem TargetFileName="$fileinputname$.poco" ReplaceParameters="false" CustomTool="CSharpDataObjectGenerator">PocoFile.poco</ProjectItem>
+	</TemplateContent>
+</VSTemplate>
