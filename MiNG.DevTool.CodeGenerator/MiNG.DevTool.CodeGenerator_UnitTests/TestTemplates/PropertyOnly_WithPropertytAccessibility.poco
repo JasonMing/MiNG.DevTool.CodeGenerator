@@ -1,0 +1,6 @@
+﻿public Property1
+protected Property2
+private Property3
+internal Property4
+protected internal Property5
+internal protected Property6

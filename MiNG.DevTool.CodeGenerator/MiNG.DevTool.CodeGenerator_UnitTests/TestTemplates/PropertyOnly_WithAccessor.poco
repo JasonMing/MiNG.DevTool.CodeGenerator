@@ -1,0 +1,13 @@
+﻿Property1 { get; set; }
+Property2 { get; }
+Property3 { set; }
+Property4 { private get; set; }
+Property5 { get; private set; }
+Property6 { get; protected internal set; }
+Property7{ get; set; }
+Property8 {get; set; }
+Property9 { get;set; }
+Property10 { get; set;}
+Property11{get;set;}
+Property12:p12 { get; set; }
+Property13:p13{ get; set; }

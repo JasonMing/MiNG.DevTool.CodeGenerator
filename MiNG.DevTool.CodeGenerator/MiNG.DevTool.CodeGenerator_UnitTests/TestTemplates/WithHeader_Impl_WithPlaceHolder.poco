@@ -1,0 +1,4 @@
+﻿@impl ISerializable
+@impl ISignable<$class>
+
+Name
