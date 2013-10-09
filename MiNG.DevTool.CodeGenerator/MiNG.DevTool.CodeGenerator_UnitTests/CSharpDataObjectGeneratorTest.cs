@@ -166,5 +166,14 @@ namespace MiNG.DevTool.CodeGenerator.UnitTests
 			Assert.IsTrue(code.Contains("public Int32 Name"));
 		}
 
+		[TestMethod()]
+		public void Test_GenerateCodeInternal_WithHeader_Using()
+		{
+			var code = this.CallGenerateCodeInternal("WithHeader_Using.poco");
+			this.TestContext.WriteLine("{0}", code);
+			Assert.IsTrue(code.Contains("using System;"));
+			Assert.IsTrue(code.Contains("using System.Linq;"));
+		}
+
 	}
 }

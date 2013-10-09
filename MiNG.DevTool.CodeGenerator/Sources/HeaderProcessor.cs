@@ -8,7 +8,8 @@ namespace MiNG.DevTool.CodeGenerator
 {
 	class HeaderProcessor
 	{
-		private readonly List<String> _usings = new List<String>();
+		private readonly List<String> _fullUsings = new List<String>();
+		private readonly List<String> _shortUsings = new List<String>();
 		private String _namespace;
 		private String _base;
 		private readonly List<String> _implements = new List<String>();
@@ -57,8 +58,15 @@ namespace MiNG.DevTool.CodeGenerator
 						{
 							throw new FormatException("@using not allow empty definition.");
 						}
-						this._usings.Add(@using);
+						if (@using.StartsWith("."))
+						{
+							this._shortUsings.Add(@using.Remove(0, 1));
+						} else
+						{
+							this._fullUsings.Add(@using);
+						}
 						break;
+					case "@ns":
 					case "@namespace":
 						if (this._namespace != null)
 						{
@@ -84,6 +92,7 @@ namespace MiNG.DevTool.CodeGenerator
 						this._base = @base.Replace("$class", this.ClassName);
 						break;
 					case "@impl":
+					case "@implement":
 						var impl = reader.ReadToEnd();
 						if (String.IsNullOrEmpty(impl))
 						{
@@ -109,12 +118,12 @@ namespace MiNG.DevTool.CodeGenerator
 
 		public void WriteHeader(IndentStreamWriter writer)
 		{
-			if (this._usings.Count == 0)
+			if (this._fullUsings.Count == 0)
 			{
 				writer.WriteLine("using System;");
 			} else
 			{
-				foreach (var @using in this._usings.OrderBy(key => key))
+				foreach (var @using in this._fullUsings.OrderBy(key => key))
 				{
 					writer.WriteLine("using {0};", @using);
 				}
@@ -123,6 +132,11 @@ namespace MiNG.DevTool.CodeGenerator
 
 			writer.WriteLine("namespace {0}", this._namespace ?? this.Namespace);
 			writer.WriteOpenBrace();
+			foreach (var @using in this._shortUsings.OrderBy(key => key))
+			{
+				writer.WriteLineIndent("using {0};", @using);
+			}
+			writer.WriteLine();
 			writer.WriteIndent("public partial class {0}", this.ClassName);
 			if (this._base != null)
 			{

@@ -125,6 +125,9 @@
     <None Include="TestTemplates\WithHeader_DefaultType.poco">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="TestTemplates\WithHeader_Using.poco">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MiNG.DevTool.CodeGenerator.csproj">

@@ -4,11 +4,17 @@
 		<Name>Poco文件</Name>
 		<Description>用于生成简单对象的模版文件。</Description>
 		<ProjectType>CSharp</ProjectType>
+		<ProjectSubType>General</ProjectSubType>
 		<Icon Package="{a3d9bd45-ab54-4946-af71-c31afa4d669a}" ID="110"/>
 		<TemplateID>cbddb061-2f28-4554-bee0-c7d647f485b3</TemplateID>
 	</TemplateData>
 	<TemplateContent>
-		<References />
-		<ProjectItem TargetFileName="$fileinputname$.poco" ReplaceParameters="false" CustomTool="CSharpDataObjectGenerator">PocoFile.poco</ProjectItem>
+		<References>
+			<Reference>
+				<Assembly>System</Assembly>
+			</Reference>
+		</References>
+		<ProjectItem TargetFileName="$fileinputname$.poco" ReplaceParameters="true" CustomTool="CSharpDataObjectGenerator">PocoFile.poco</ProjectItem>
+		<ProjectItem TargetFileName="$fileinputname$.poco\$fileinputname$.cs" ReplaceParameters="true" SubType="Code">PocoFile.cs</ProjectItem>
 	</TemplateContent>
 </VSTemplate>

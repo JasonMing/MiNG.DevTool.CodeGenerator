@@ -121,6 +121,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ItemTemplates\CSharp\General\1033\PocoFile\PocoFile.cs">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Compile Include="Sources\BraceWriter.cs" />
     <Compile Include="Sources\ContentReader.cs" />
     <Compile Include="Sources\CSharpDataObjectGenerator.cs" />
