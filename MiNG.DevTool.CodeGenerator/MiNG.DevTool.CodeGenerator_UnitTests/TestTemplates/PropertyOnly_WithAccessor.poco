@@ -1,6 +1,8 @@
 ﻿Property1 { get; set; }
 Property2 { get; }
+Property2_1:p2_get_only { get; }
 Property3 { set; }
+Property3_1:p2_set_only { set; }
 Property4 { private get; set; }
 Property5 { get; private set; }
 Property6 { get; protected internal set; }
@@ -11,3 +13,4 @@ Property10 { get; set;}
 Property11{get;set;}
 Property12:p12 { get; set; }
 Property13:p13{ get; set; }
+

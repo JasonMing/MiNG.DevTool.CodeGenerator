@@ -114,6 +114,7 @@ namespace MiNG.DevTool.CodeGenerator
 					return @default ?? Missed;
 				} else
 				{
+					this.reader.ReadWord();
 					return code;
 				}
 			} else
