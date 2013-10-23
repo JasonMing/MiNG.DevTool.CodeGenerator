@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace MiNG.DevTool.CodeGenerator
 {
@@ -31,6 +32,8 @@ namespace MiNG.DevTool.CodeGenerator
 
 		public String GetterTemplate { get; set; }
 		public String SetterTemplate { get; set; }
+
+		public String Document { get; set; }
 
 		public PropertyProcessor(String line)
 		{
@@ -75,6 +78,7 @@ namespace MiNG.DevTool.CodeGenerator
 
 		public void WriteProperty(IndentStreamWriter writer)
 		{
+			this.WriteDocument(writer);
 			var declare = new String[]
 			{
 				this.propertyAccess,
@@ -115,6 +119,28 @@ namespace MiNG.DevTool.CodeGenerator
 				}
 			}
 			writer.WriteLine();
+		}
+
+		private void WriteDocument(IndentStreamWriter writer)
+		{
+			if (String.IsNullOrWhiteSpace(this.Document))
+			{
+				return;
+			}
+			writer.WriteLineIndent("/// <summary>");
+			using (var docReader = new StringReader(this.Document))
+			{
+				while (true)
+				{
+					var line = docReader.ReadLine();
+					if (line == null)
+					{
+						break;
+					}
+					writer.WriteLineIndent("/// {0}", line);
+				}
+			}
+			writer.WriteLineIndent("/// </summary>");
 		}
 
 		public void Dispose()

@@ -1,0 +1,10 @@
+﻿/// This is the common property.
+Property1 { get; set; }
+
+// This is no document !
+
+/// This is the read-only property.
+Property2:p2_get_only { get; }
+
+/// This is the write-only property.
+Property3:p2_set_only { set; }

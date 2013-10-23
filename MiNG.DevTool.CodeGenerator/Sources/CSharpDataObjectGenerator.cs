@@ -67,13 +67,21 @@ namespace MiNG.DevTool.CodeGenerator
 									headerOver = true;
 									headerProcessor.WriteHeader(writer);
 								}
+								// Read documents
+								var document = new StringBuilder();
+								while (ContentReader.IsDocumentLine(line))
+								{
+									document.AppendLine(line.TrimStart().Remove(0, 3).TrimStart());
+									line = reader.ReadLine();
+								}
 								using (var propertyProcessor = new PropertyProcessor(line))
 								{
 									propertyProcessor.Default = headerProcessor.PropertyDefaultSettings;
+									propertyProcessor.Document = document.ToString();
 									propertyProcessor.Process();
 									propertyProcessor.WriteProperty(writer);
 								}
-							}
+							}	// End header detection.
 						}	// End loop.
 					}	// End ContentgReader.
 					writer.Flush();

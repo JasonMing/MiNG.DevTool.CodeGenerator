@@ -175,5 +175,16 @@ namespace MiNG.DevTool.CodeGenerator.UnitTests
 			Assert.IsTrue(code.Contains("using System.Linq;"));
 		}
 
+		[TestMethod()]
+		public void Test_GenerateCodeInternal_PropertyOnly_WithDocument()
+		{
+			var code = this.CallGenerateCodeInternal("PropertyOnly_WithDocument.poco");
+			this.TestContext.WriteLine("{0}", code);
+			Assert.IsTrue(code.Contains("/// This is the common property."));
+			Assert.IsTrue(code.Contains("/// This is the read-only property."));
+			Assert.IsTrue(code.Contains("/// This is the write-only property."));
+			Assert.IsFalse(code.Contains("This is no document !"));
+		}
+
 	}
 }
